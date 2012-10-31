@@ -8,7 +8,13 @@
 </head>
 <body>
 
-<%= yield %>
+  <%= yield %>
+
+  <% if user_signed_in? %>
+    Hello, <%= current_user.username %>.
+  <% else %>
+    <%= link_to 'Sign in with Github', '/auth/github' %>
+  <% end %>
 
 </body>
 </html>

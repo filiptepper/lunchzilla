@@ -12,6 +12,7 @@ gem 'journey',
 gem 'rails',
   github: 'rails/rails'
 
+gem 'omniauth-github'
 gem 'pg'
 
 group :assets do
