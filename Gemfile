@@ -17,11 +17,12 @@ gem 'omniauth-github'
 gem 'pg'
 
 group :assets do
+  gem 'jquery-rails',
+    github: 'rails/jquery-rails'
+
   gem 'sprockets-rails',
     github: 'rails/sprockets-rails'
 
-  gem 'sass-rails',
-    github: 'rails/sass-rails'
 
   gem 'uglifier', '>= 1.0.3'
 end
