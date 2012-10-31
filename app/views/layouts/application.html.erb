@@ -2,20 +2,38 @@
 <html>
 <head>
   <title>Lunchzilla</title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="/">Lunchzilla</a>
+        <div class="pull-right">
+          <% if user_signed_in? -%>
+          <ul class="nav">
+            <li class="navbar-text">
+              Bon appétit <%= current_user.username %>!
+            </li>
+          </ul>
+          <div class="nav">
+            <%= link_to 'Sign out', sessions_path, method: :delete,
+              class: "btn" %>
+          </div>
+          <% else -%>
+          <div class="nav">
+            <%= link_to 'Sign in with Github', '/auth/github',
+              class: 'btn btn-primary' %>
+          </div>
+          <% end -%>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <%= yield %>
-
-  <% if user_signed_in? %>
-    Hello, <%= current_user.username %>.
-    <%= image_tag current_user.gravatar_url %>
-  <% else %>
-    <%= link_to 'Sign in with Github', '/auth/github' %>
-  <% end %>
 
 </body>
 </html>
