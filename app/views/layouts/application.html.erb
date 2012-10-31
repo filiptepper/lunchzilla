@@ -12,6 +12,7 @@
 
   <% if user_signed_in? %>
     Hello, <%= current_user.username %>.
+    <%= image_tag current_user.gravatar_url %>
   <% else %>
     <%= link_to 'Sign in with Github', '/auth/github' %>
   <% end %>

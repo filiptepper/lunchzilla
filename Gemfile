@@ -12,6 +12,7 @@ gem 'journey',
 gem 'rails',
   github: 'rails/rails'
 
+gem 'gravtastic'
 gem 'omniauth-github'
 gem 'pg'
 

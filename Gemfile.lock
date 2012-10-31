@@ -86,6 +86,7 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.4)
       multipart-post (~> 1.1)
+    gravtastic (3.2.6)
     hashie (1.2.0)
     hike (1.2.1)
     httpauth (0.2.0)
@@ -146,6 +147,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-deprecated_finders!
   arel!
+  gravtastic
   journey!
   omniauth-github
   pg
