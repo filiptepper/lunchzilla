@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authenticate_user!
-    redirect_to root_path, alert: "Please, sign in first!" unless user_signed_in?
+    redirect_to root_path, alert: 'Please, sign in first!' unless user_signed_in?
   end
 
   def current_user=(user)
