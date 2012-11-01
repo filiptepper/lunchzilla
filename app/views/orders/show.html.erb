@@ -1,0 +1,31 @@
+<h1>
+  <span class="label-success"><%= @order.place %></span> order details
+</h1>
+
+<% if @order.items.any? -%>
+<table class="table">
+  <thead>
+    <tr>
+      <th>What?</th>
+      <th>Who?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.items.each do |item| -%>
+    <tr>
+      <td>
+        <%= item.name %>
+      </td>
+      <td>
+        <%= item.user.username %>
+      </td>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<% else -%>
+No orders here. :(
+<% end -%>
+
+Show me <%= link_to 'all orders', orders_path %>.

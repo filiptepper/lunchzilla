@@ -11,7 +11,17 @@
   <tbody>
     <% @orders.each do |order| -%>
     <tr>
-      <td><%= order.place %></td>
+      <td>
+        <%= link_to order.place, order_path(order) %>
+        <br>
+        <% if order.has_item_for?(current_user) -%>
+          You're having
+          <span class="label-success"><%= order.item_for(current_user).name %></span>.
+        <% else -%>
+          You didn't order anything.
+          <%= link_to "Place", new_order_item_path(order) %> your order now!
+        <% end -%>
+      </td>
       <td>
         <%= order.user.username %>
       </td>
@@ -20,7 +30,7 @@
   </tbody>
 </table>
 
-Want something else? Go ahead an <%= link_to "order", new_order_path %>!
+Want something else? Go ahead and <%= link_to "order", new_order_path %>!
 <% else -%>
 There's nothing on the menu today. :(
 Why don't you <%= link_to "order something", new_order_path %>?
