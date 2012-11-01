@@ -1,0 +1,16 @@
+<%= form_for @order, html: { class: "form-horizontal well" } do |f| %>
+  <fieldset>
+    <legend>I want to order!</legend>
+
+    <div class="control-group">
+      <%= f.label :place, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :place %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "Order!", class: "btn btn-primary" %>
+    </div>
+  </fieldset>
+<% end %>

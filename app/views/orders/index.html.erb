@@ -1,0 +1,27 @@
+<h1>What's cooking today?</h1>
+
+<% if @orders.any? -%>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Place</th>
+      <th>Who's on it?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| -%>
+    <tr>
+      <td><%= order.place %></td>
+      <td>
+        <%= order.user.username %>
+      </td>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+Want something else? Go ahead an <%= link_to "order", new_order_path %>!
+<% else -%>
+There's nothing on the menu today. :(
+Why don't you <%= link_to "order something", new_order_path %>?
+<% end -%>
