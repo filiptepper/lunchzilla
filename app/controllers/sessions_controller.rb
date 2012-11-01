@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     )
     self.current_user = user
 
-    redirect_to orders_path, notice: 'Bon appétit, #{current_user.username}!'
+    redirect_to orders_path, notice: "Bon appétit, #{current_user.username}!"
   end
 
   def destroy
