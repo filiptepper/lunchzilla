@@ -1,17 +1,20 @@
+# encoding: utf-8
+
 class SessionsController < ApplicationController
   def create
-    user = User.find_or_create_by_github_id_and_username_and_email(
-      auth_hash["extra"]["raw_info"]["id"],
-      auth_hash["extra"]["raw_info"]["login"],
-      auth_hash["extra"]["raw_info"]["email"]
+    user = User.find_or_create_by(
+      github_id: auth_hash["extra"]["raw_info"]["id"],
+      username:  auth_hash["extra"]["raw_info"]["login"],
+      email:     auth_hash["extra"]["raw_info"]["email"]
     )
     self.current_user = user
-    redirect_to root_path
+
+    redirect_to orders_path, notice: "Bon appétit, #{current_user.username}!"
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_path
+    redirect_to root_path, notice: "Hope you had a good time!"
   end
 
   protected

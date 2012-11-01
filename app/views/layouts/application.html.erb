@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Lunchzilla</title>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div class="navbar navbar-fixed-top navbar-inverse">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="brand" href="/">Lunchzilla</a>
-        <div class="pull-right">
-          <% if user_signed_in? -%>
+  <head>
+    <title>Lunchzilla</title>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lunchzilla</a>
           <ul class="nav">
-            <li class="navbar-text">
-              Bon appétit <%= current_user.username %>!
+            <li>
+              <%= link_to "Orders", orders_path %>
             </li>
           </ul>
-          <div class="nav">
-            <%= link_to 'Sign out', sessions_path, method: :delete,
-              class: "btn" %>
+          <div class="pull-right">
+            <div class="nav">
+            <% if user_signed_in? -%>
+              <%= link_to 'Sign out', sessions_path, method: :delete,
+                class: "btn" %>
+            <% else -%>
+              <%= link_to 'Sign in with Github', '/auth/github',
+                class: 'btn btn-primary' %>
+            <% end -%>
+            </div>
           </div>
-          <% else -%>
-          <div class="nav">
-            <%= link_to 'Sign in with Github', '/auth/github',
-              class: 'btn btn-primary' %>
-          </div>
-          <% end -%>
         </div>
       </div>
     </div>
-  </div>
 
-  <%= yield %>
+    <div class="container">
+      <% if flash[:alert] %>
+      <div class="alert"><%= flash[:alert] %></div>
+      <% end -%>
+      <% if flash[:notice] %>
+      <div class="alert alert-success"><%= flash[:notice] %></div>
+      <% end -%>
 
-</body>
+      <%= yield %>
+    </div>
+
+  </body>
 </html>
