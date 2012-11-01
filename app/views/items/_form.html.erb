@@ -1,0 +1,19 @@
+<%= form_for [@order, @item], html: { class: 'form-horizontal well' } do |f| %>
+  <fieldset>
+    <legend>
+      I want to order at
+      <span class="label-important"><%= @order.place %></span>!
+    </legend>
+
+    <div class="control-group">
+      <%= f.label :name, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit 'Order!', class: 'btn btn-primary' %>
+    </div>
+  </fieldset>
+<% end %>

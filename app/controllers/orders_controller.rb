@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :find_order, only: [:show, :edit, :update, :destroy]
 
   def index
     @orders = Order.current
@@ -20,13 +21,26 @@ class OrdersController < ApplicationController
     end
   end
 
-  def show
-    @order = Order.find(params[:id])
+  def update
+    if @order.update_attributes(order_params)
+      redirect_to action: :index, notice: "All done!"
+    else
+      render action: :edit
+    end
+  end
+
+  def destroy
+    @order.destroy
+    redirect_to action: :index, notice: "All gone! :("
   end
 
 
   private
 
+
+  def find_order
+    @order = Order.find(params[:id])
+  end
 
   def order_params
     params.require(:order).permit(:place)

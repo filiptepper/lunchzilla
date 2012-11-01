@@ -6,6 +6,7 @@
     <tr>
       <th>Place</th>
       <th>Who's on it?</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
@@ -16,14 +17,19 @@
         <br>
         <% if order.has_item_for?(current_user) -%>
           You're having
-          <span class="label-success"><%= order.item_for(current_user).name %></span>.
+          <%= link_to edit_order_item_path(order, order.item_for(current_user)) do -%>
+            <span class="label label-success"><%= order.item_for(current_user).name %></span><% end -%>.
         <% else -%>
           You didn't order anything.
-          <%= link_to "Place", new_order_item_path(order) %> your order now!
+          <%= link_to 'Place', new_order_item_path(order) %> your order now!
         <% end -%>
       </td>
       <td>
         <%= order.user.username %>
+      </td>
+      <td>
+        <%= link_to 'Edit', edit_order_path(order), class: 'label' %>
+        <%= link_to 'Delete', order_path(order), class: 'label label-important', method: :delete %>
       </td>
     </tr>
     <% end -%>
