@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
   gravtastic
 
   has_many :orders
-  has_many :items, through: :orders
+  has_many :items
 end
