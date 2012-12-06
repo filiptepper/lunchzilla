@@ -17,7 +17,13 @@ class SessionsController < ApplicationController
     redirect_to root_path, notice: 'Hope you had a good time!'
   end
 
+  def failure
+    redirect_to root_path, notice: 'Something went wrong. :( Please try again.'
+  end
+
+
   protected
+
 
   def auth_hash
     request.env['omniauth.auth']
