@@ -2,12 +2,11 @@
 
 class SessionsController < ApplicationController
   def create
-    user = User.find_or_create_by(
-      github_id: auth_hash['extra']['raw_info']['id'],
-      username:  auth_hash['extra']['raw_info']['login'],
-      email:     auth_hash['extra']['raw_info']['email']
+    self.current_user = User.find_or_create_by(
+      github_id: auth_hash.uid,
+      username:  auth_hash.info['nickname'],
+      email:     auth_hash.info['email']
     )
-    self.current_user = user
 
     redirect_to orders_path, notice: "Bon appétit, #{current_user.username}!"
   end
