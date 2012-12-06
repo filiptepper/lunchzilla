@@ -25,12 +25,12 @@ group :assets do
   gem 'sprockets-rails',
     github: 'rails/sprockets-rails'
 
-
   gem 'uglifier', '>= 1.0.3'
 end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 group :production do
