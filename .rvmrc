@@ -1,1 +1,1 @@
-rvm 1.9.3-p286@lunchzilla --create
+rvm jruby-1.7.1@lunchzilla --create
