@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3', engine: 'jruby', engine_version: '1.7.1'
+ruby '1.9.3'
 
 gem 'activerecord-deprecated_finders',
   github: 'rails/activerecord-deprecated_finders'
@@ -14,9 +14,9 @@ gem 'journey',
 gem 'rails',
   github: 'rails/rails'
 
-gem 'activerecord-jdbcpostgresql-adapter'
 gem 'gravtastic'
 gem 'omniauth-github'
+gem 'pg'
 
 group :assets do
   gem 'jquery-rails',
@@ -31,4 +31,8 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+end
+
+group :production do
+  gem 'unicorn'
 end
