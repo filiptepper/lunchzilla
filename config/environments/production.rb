@@ -71,17 +71,9 @@ Lunchzilla::Application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  # Log the query plan for queries taking more than this (works
-  # with SQLite, MySQL, and PostgreSQL).
-  # config.active_record.auto_explain_threshold_in_seconds = 0.5
-
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
-  # Default the production mode queue to an synchronous queue. You will probably
-  # want to replace this with an out-of-process queueing solution.
-  # config.queue = ActiveSupport::SynchronousQueue.new
 end
