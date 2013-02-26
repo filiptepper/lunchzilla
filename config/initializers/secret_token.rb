@@ -9,4 +9,4 @@
 
 # Make sure your secret_token is kept private
 # if you're sharing your code publicly.
-Lunchzilla::Application.config.secret_token = 'adc7b0494f2846ca24369b46fea8d9a02d7ca30637dd2e3e3c9a9e4bd73d800a651fefe7d80fd5ba3ebd3471a2e576e03818696526c036945135ca2702e54719'
+Lunchzilla::Application.config.secret_key_base = ENV['SECRET_KEY_BASE']
